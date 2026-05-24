@@ -68,8 +68,64 @@
                     <span class="editor-status">Typing Test</span>
                 </div>
 
-                <div class="typing-placeholder">
-                    Typing speed feature coming soon...
+                <!-- TYPING STATS -->
+                <div class="typing-stats">
+
+                    <div class="stats-card">
+                        <p>Time</p>
+                        <h2 id="time-display">0s</h2>
+                    </div>
+
+                    <div class="stats-card">
+                        <p>Current WPM</p>
+                        <h2 id="current-wpm">0</h2>
+                    </div>
+
+                    <div class="stats-card">
+                        <p>Average WPM</p>
+                        <h2 id="average-wpm">0</h2>
+                    </div>
+
+                </div>
+
+
+                <!-- GENERATED TEXT -->
+                <div class="generated-text-wrapper">
+
+                    <p id="generated-text">
+                        Loading text...
+                    </p>
+
+                </div>
+
+
+                <!-- TYPING INPUT -->
+                <div class="typing-input-wrapper">
+
+                    <textarea id="typing-input" placeholder="Start typing here..."></textarea>
+
+                </div>
+
+
+                <!-- RESULT -->
+                <div class="typing-result hidden">
+
+                    <h2>Typing Complete!</h2>
+
+                    <p>
+                        Great job finishing the typing session.
+                    </p>
+
+                </div>
+
+
+                <!-- ACTION BUTTON -->
+                <div class="button-group">
+
+                    <button id="restart-btn">
+                        Restart Test
+                    </button>
+
                 </div>
 
             </div>
