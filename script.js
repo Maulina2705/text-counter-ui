@@ -1,4 +1,20 @@
 // ELEMENTS
+
+// TYPING TEXT SAMPLES
+const textSamples = [
+
+    "Modern interfaces should feel clean responsive and comfortable for users on every device.",
+
+    "JavaScript allows developers to build interactive applications directly in the browser.",
+
+    "Consistent practice is one of the best ways to improve typing speed and coding skills.",
+
+    "Frontend development combines creativity logic and user experience into one workflow.",
+
+    "Simple projects that are polished properly can become impressive portfolio pieces."
+
+];
+
 const textInput = document.getElementById("text-input");
 const charCount = document.getElementById("char-count");
 const noSpaceCount = document.getElementById("no-space-count");
@@ -6,6 +22,140 @@ const noSpaceCount = document.getElementById("no-space-count");
 const copyBtn = document.getElementById("copy-btn");
 const clearBtn = document.getElementById("clear-btn");
 
+// TYPING ELEMENTS
+const generatedText = document.getElementById("generated-text");
+const typingInput = document.getElementById("typing-input");
+
+const timeDisplay = document.getElementById("time-display");
+const currentWpmDisplay = document.getElementById("current-wpm");
+const averageWpmDisplay = document.getElementById("average-wpm");
+
+const restartBtn = document.getElementById("restart-btn");
+
+const typingResult = document.querySelector(".typing-result");
+
+// TYPING VARIABLES
+let startTime = null;
+let timerInterval = null;
+
+let currentText = "";
+let typingStarted = false;
+
+// GENERATE RANDOM TEXT
+function generateRandomText() {
+
+    const randomIndex = Math.floor(
+        Math.random() * textSamples.length
+    );
+
+    currentText = textSamples[randomIndex];
+
+    generatedText.textContent = currentText;
+
+}
+
+// START TIMER
+function startTimer() {
+
+    startTime = new Date();
+
+    timerInterval = setInterval(() => {
+
+        const currentTime = new Date();
+
+        const seconds =
+            Math.floor((currentTime - startTime) / 1000);
+
+        timeDisplay.textContent = `${seconds}s`;
+
+        updateWPM(seconds);
+
+    }, 1000);
+
+}
+
+// UPDATE WPM
+function updateWPM(seconds) {
+
+    if (seconds === 0) return;
+
+    const typedText = typingInput.value;
+
+    // STANDARD WPM FORMULA
+    const wordsTyped = typedText.length / 5;
+
+    const minutes = seconds / 60;
+
+    const wpm = Math.floor(wordsTyped / minutes);
+
+    currentWpmDisplay.textContent = wpm;
+    averageWpmDisplay.textContent = wpm;
+
+}
+
+// START TYPING SESSION
+typingInput.addEventListener("input", () => {
+
+    // START TIMER ON FIRST INPUT
+    if (!typingStarted) {
+
+        typingStarted = true;
+
+        startTimer();
+
+    }
+
+    checkTypingComplete();
+
+});
+
+// CHECK COMPLETE
+function checkTypingComplete() {
+
+    const typedText = typingInput.value;
+
+    if (typedText === currentText) {
+
+        clearInterval(timerInterval);
+
+        typingInput.disabled = true;
+
+        typingResult.classList.remove("hidden");
+
+    }
+
+}
+
+// RESTART TEST
+function restartTypingTest() {
+
+    clearInterval(timerInterval);
+
+    typingStarted = false;
+
+    startTime = null;
+
+    typingInput.disabled = false;
+
+    typingInput.value = "";
+
+    timeDisplay.textContent = "0s";
+
+    currentWpmDisplay.textContent = "0";
+
+    averageWpmDisplay.textContent = "0";
+
+    typingResult.classList.add("hidden");
+
+    generateRandomText();
+
+}
+
+// RESTART BUTTON
+restartBtn.addEventListener(
+    "click",
+    restartTypingTest
+);
 
 // UPDATE COUNTER
 function updateCounter() {
@@ -97,3 +247,6 @@ sidebarIcons.forEach((icon) => {
     });
 
 });
+
+// INITIALIZE TYPING TEST
+generateRandomText();
