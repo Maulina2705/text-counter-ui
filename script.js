@@ -34,12 +34,24 @@ const restartBtn = document.getElementById("restart-btn");
 
 const typingResult = document.querySelector(".typing-result");
 
+// RESULT ELEMENTS
+const finalWpm = document.getElementById("final-wpm");
+
+const accuracyResult =
+    document.getElementById("accuracy-result");
+
+const mistakesResult =
+    document.getElementById("mistakes-result");
+
 // TYPING VARIABLES
 let startTime = null;
 let timerInterval = null;
 
 let currentText = "";
 let typingStarted = false;
+
+let mistakes = 0;
+let accuracy = 100;
 
 // GENERATE RANDOM TEXT
 function generateRandomText() {
@@ -110,6 +122,8 @@ function updateWPM(seconds) {
 
         const textSpans = generatedText.querySelectorAll("span");
 
+        mistakes = 0;
+
         textSpans.forEach((span, index) => {
 
             const typedChar = typedChars[index];
@@ -142,9 +156,22 @@ function updateWPM(seconds) {
 
                 span.classList.add("incorrect");
 
+                mistakes++;
+
             }
 
         });
+
+        // ACCURACY
+        const totalTyped = typedChars.length;
+
+        if (totalTyped > 0) {
+
+            accuracy = Math.floor(
+                ((totalTyped - mistakes) / totalTyped) * 100
+            );
+
+        }
 
     }
 
@@ -178,6 +205,16 @@ function checkTypingComplete() {
 
         typingInput.disabled = true;
 
+        // FINAL RESULT
+        finalWpm.textContent =
+            currentWpmDisplay.textContent;
+
+        accuracyResult.textContent =
+            `${accuracy}%`;
+
+        mistakesResult.textContent =
+            mistakes;
+
         typingResult.classList.remove("hidden");
 
     }
@@ -190,6 +227,9 @@ function restartTypingTest() {
     clearInterval(timerInterval);
 
     typingStarted = false;
+
+    mistakes = 0;
+    accuracy = 100;
 
     startTime = null;
 
