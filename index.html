@@ -5,45 +5,99 @@
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
-            <div class="sidebar-icon active">◉</div>
-            <div class="sidebar-icon">✎</div>
-            <div class="sidebar-icon">⚙</div>
+
+            <div class="sidebar-icon active" data-panel="counter-panel">
+                ◉
+            </div>
+
+            <div class="sidebar-icon" data-panel="typing-panel">
+                ✎
+            </div>
+
+            <div class="sidebar-icon" data-panel="about-panel">
+                ⚙
+            </div>
+
         </aside>
 
-        <!-- MAIN CARD -->
         <section class="editor-card">
 
-            <!-- HEADER -->
-            <div class="editor-header">
-                <h1>Counter Text</h1>
-                <span class="editor-status">Live Counter</span>
-            </div>
+            <!-- COUNTER PANEL -->
+            <div class="panel active-panel" id="counter-panel">
 
-            <!-- TEXTAREA -->
-            <div class="textarea-wrapper">
-                <textarea id="text-input" placeholder="Start typing here..."></textarea>
-            </div>
-
-            <!-- COUNTER -->
-            <div class="counter-section">
-
-                <div class="counter-box">
-                    <p>Characters</p>
-                    <h2 id="char-count">0</h2>
+                <!-- HEADER -->
+                <div class="editor-header">
+                    <h1>Counter Text</h1>
+                    <span class="editor-status">Live Counter</span>
                 </div>
 
-                <div class="counter-box">
-                    <p>No Spaces</p>
-                    <h2 id="no-space-count">0</h2>
+                <!-- TEXTAREA -->
+                <div class="textarea-wrapper">
+                    <textarea id="text-input" placeholder="Start typing here..."></textarea>
+                </div>
+
+                <!-- COUNTER -->
+                <div class="counter-section">
+
+                    <div class="counter-box">
+                        <p>Characters</p>
+                        <h2 id="char-count">0</h2>
+                    </div>
+
+                    <div class="counter-box">
+                        <p>No Spaces</p>
+                        <h2 id="no-space-count">0</h2>
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+                <div class="button-group">
+                    <button id="copy-btn">Copy Text</button>
+                    <button id="clear-btn">Clear</button>
                 </div>
 
             </div>
 
-            <!-- BUTTONS -->
-            <div class="button-group">
-                <button id="copy-btn">Copy Text</button>
-                <button id="clear-btn">Clear</button>
+
+            <!-- TYPING PANEL -->
+            <div class="panel" id="typing-panel">
+
+                <div class="editor-header">
+                    <h1>Typing Speed</h1>
+                    <span class="editor-status">Typing Test</span>
+                </div>
+
+                <div class="typing-placeholder">
+                    Typing speed feature coming soon...
+                </div>
+
             </div>
+
+
+            <!-- ABOUT PANEL -->
+            <div class="panel" id="about-panel">
+
+                <div class="editor-header">
+                    <h1>About Project</h1>
+                    <span class="editor-status">Information</span>
+                </div>
+
+                <div class="about-content">
+
+                    <p>
+                        Counter Text is a modern text utility tool
+                        built using HTML, CSS, and JavaScript.
+                    </p>
+
+                    <p>
+                        Created by Maulina Hilwa
+                    </p>
+
+                </div>
+
+            </div>
+
 
             <!-- FOOTER -->
             <footer>
