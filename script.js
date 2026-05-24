@@ -50,7 +50,19 @@ function generateRandomText() {
 
     currentText = textSamples[randomIndex];
 
-    generatedText.textContent = currentText;
+    generatedText.innerHTML = "";
+
+    currentText.split("").forEach((char) => {
+
+        const span = document.createElement("span");
+
+        span.textContent = char;
+
+        generatedText.appendChild(span);
+
+    });
+
+    updateCharacterState();
 
 }
 
@@ -91,6 +103,51 @@ function updateWPM(seconds) {
     currentWpmDisplay.textContent = wpm;
     averageWpmDisplay.textContent = wpm;
 
+    // CHARACTER MATCHING
+    function updateCharacterState() {
+
+        const typedChars = typingInput.value.split("");
+
+        const textSpans = generatedText.querySelectorAll("span");
+
+        textSpans.forEach((span, index) => {
+
+            const typedChar = typedChars[index];
+
+            // RESET
+            span.classList.remove(
+                "correct",
+                "incorrect",
+                "current"
+            );
+
+            // CURRENT CHARACTER
+            if (typedChar == null) {
+
+                if (index === typedChars.length) {
+                    span.classList.add("current");
+                }
+
+            }
+
+            // CORRECT
+            else if (typedChar === span.textContent) {
+
+                span.classList.add("correct");
+
+            }
+
+            // INCORRECT
+            else {
+
+                span.classList.add("incorrect");
+
+            }
+
+        });
+
+    }
+
 }
 
 // START TYPING SESSION
@@ -106,6 +163,7 @@ typingInput.addEventListener("input", () => {
     }
 
     checkTypingComplete();
+    updateCharacterState();
 
 });
 
@@ -148,6 +206,7 @@ function restartTypingTest() {
     typingResult.classList.add("hidden");
 
     generateRandomText();
+    updateCharacterState();
 
 }
 

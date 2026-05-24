@@ -317,6 +317,21 @@ footer {
     color: #d7dee7;
 }
 
+/* CHARACTER STATES */
+.correct {
+    color: #e8ecf1;
+}
+
+.incorrect {
+    color: #ff6b6b;
+}
+
+.current {
+    background: rgba(94, 161, 255, 0.2);
+
+    border-radius: 4px;
+}
+
 /* TYPING INPUT */
 .typing-input-wrapper {
     margin-bottom: 25px;
