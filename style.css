@@ -310,31 +310,48 @@ footer {
 
 /* GENERATED TEXT CONTENT */
 #generated-text {
-    font-size: 24px;
+    font-size: 30px;
 
     line-height: 1.8;
 
-    color: #d7dee7;
+    color: #7d8794;
+
+    font-weight: 500;
+
+    letter-spacing: 0.5px;
 }
 
 /* CHARACTER STATES */
 .correct {
-    color: #e8ecf1;
+    color: #f5f7fa;
 }
 
 .incorrect {
     color: #ff6b6b;
+
+    text-decoration: underline;
 }
 
 .current {
-    background: rgba(94, 161, 255, 0.2);
+    background: rgba(94, 161, 255, 0.25);
 
     border-radius: 4px;
+
+    animation: blink 1s infinite;
 }
 
 /* TYPING INPUT */
 .typing-input-wrapper {
     margin-bottom: 25px;
+}
+
+/* TYPING INPUT */
+#typing-input {
+    min-height: 80px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
 }
 
 /* RESULT CARD */
@@ -408,6 +425,22 @@ footer {
 
     .typing-stats {
         grid-template-columns: 1fr;
+    }
+
+}
+
+@keyframes blink {
+
+    0% {
+        background: rgba(94, 161, 255, 0.15);
+    }
+
+    50% {
+        background: rgba(94, 161, 255, 0.35);
+    }
+
+    100% {
+        background: rgba(94, 161, 255, 0.15);
     }
 
 }
