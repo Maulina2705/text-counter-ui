@@ -1,20 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Counter Text</title>
-
-    <link rel="stylesheet" href="style.css" />
-</head>
+<link rel="stylesheet" href="style.css" />
 
 <body>
+    <main class="container">
 
-    <h1>Counter Text</h1>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-icon active">◉</div>
+            <div class="sidebar-icon">✎</div>
+            <div class="sidebar-icon">⚙</div>
+        </aside>
+
+        <!-- MAIN CARD -->
+        <section class="editor-card">
+
+            <!-- HEADER -->
+            <div class="editor-header">
+                <h1>Counter Text</h1>
+                <span class="editor-status">Live Counter</span>
+            </div>
+
+            <!-- TEXTAREA -->
+            <div class="textarea-wrapper">
+                <textarea id="text-input" placeholder="Start typing here..."></textarea>
+            </div>
+
+            <!-- COUNTER -->
+            <div class="counter-section">
+
+                <div class="counter-box">
+                    <p>Characters</p>
+                    <h2 id="char-count">0</h2>
+                </div>
+
+                <div class="counter-box">
+                    <p>No Spaces</p>
+                    <h2 id="no-space-count">0</h2>
+                </div>
+
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="button-group">
+                <button id="copy-btn">Copy Text</button>
+                <button id="clear-btn">Clear</button>
+            </div>
+
+            <!-- FOOTER -->
+            <footer>
+                Created by Maulina Hilwa
+            </footer>
+
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
-
-</html>
